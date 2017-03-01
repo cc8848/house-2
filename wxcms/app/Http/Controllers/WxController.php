@@ -102,15 +102,20 @@ class WxController extends Controller
         $data['userid'] = $userid;
         $data['fid'] = $id;
         $rent_label=DB::table('rent_label')->where('rent_id','=',$id)->get();
-        foreach($rent_label as $key =>$val){
-            $list[$key]=DB::table('label')->where('label_id','=',$val->label_id)->select('label_name')->get();
-            $list=json_encode($list);
-            $list=json_decode($list,true);
+        if(!empty($rent_label)){
+            foreach($rent_label as $key =>$val){
+                $list[$key]=DB::table('label')->where('label_id','=',$val->label_id)->select('label_name')->get();
+                $list=json_encode($list);
+                $list=json_decode($list,true);
+            }
+            $label_name=array();
+            foreach($list as $key =>$value){
+                $label_name[$key]=$value[0]['label_name'];
+            }
+        }else{
+            $label_name=array();
         }
-        $label_name=array();
-        foreach($list as $key =>$value){
-            $label_name[$key]=$value[0]['label_name'];
-        }
+
         $ip = $_SERVER['REMOTE_ADDR'];
         $result = History::where(array('ip'=>$ip,'rent_id'=>$id))->get()->toArray();
 
@@ -314,10 +319,14 @@ class WxController extends Controller
         if($request->isMethod('post')){
 
             $data = $request->input();
+            $label_id=explode(",",$data['label_id']);
+            unset($data['label_id']);
             unset($data['_token']);
             $data['img_id'] = $request->session()->get('img_id');
-            $res = DB::table('rent_house')->insert($data);
-
+            $res = DB::table('rent_house')->insertGetId($data);
+            foreach($label_id as $value){
+                DB::table('rent_label')->insert(['label_id'=>$value,'rent_id'=>$res]);
+            }
             if($res){
                 echo "发布成功！";
             }else{
@@ -325,11 +334,12 @@ class WxController extends Controller
             }
 
         }else{
-
+            //标签
+            $label=DB::table('label')->where('status','=',1)->select('label_name','label_id')->get();
             //生成图片关联标识
             $imgId = uniqid();
             $request->session()->put('img_id',$imgId);
-            return view('static_wx/add_housing',$data);
+            return view('static_wx/add_housing',$data,['label'=>$label]);
         }
 
     }
