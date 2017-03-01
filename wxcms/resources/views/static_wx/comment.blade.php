@@ -71,10 +71,6 @@
       return;
     }
 
-
-    alert(id);
-    alert(content);
-
     url='_add';
     $.get(url,{id:id,content:content},function(msg){
       if(msg.errCode == 1 )
@@ -88,17 +84,6 @@
       }
     },'json')
   })
-
-
-//   /* 回复 */
-//   $('#sub').click(function(){
-//     reply_content = $('#sub').parent().prev().val();
-
-
-//     reply_user_id = $('#reply').prev().val();
-// console.log(reply_content);
-//     // console.log(reply_user_id);
-//   })
 </script>
 
 </html>

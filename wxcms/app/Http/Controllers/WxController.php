@@ -188,18 +188,9 @@ class WxController extends Controller
                 $a = json_decode(json_encode($a),true);
                 $res[$k]['username'] = $a['username'];
             }
-
-// print_r($res);
-// die;
-                $list[$key]['reply'] = $res;
-           
+            $list[$key]['reply'] = $res;      
         }
-// print_r($list);
-// die;
-
         $data['list'] = $list;
-// print_r($data);=
-// die;
         return view('static_wx/comment',$data);
     }
 
@@ -221,9 +212,6 @@ class WxController extends Controller
 
         /* 接值 */
         $data = $Request->input();
-
-        print_r($data);
-        die;
         $rent_id = $data['id'];
         $content = $data['content'];
         $time = time();
