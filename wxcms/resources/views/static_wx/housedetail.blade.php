@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+    <script> var tenantId='6656aa0fb7854a8fb70ab1641a3b8801';document.write(unescape("%3Cscript id='aikfMobileMainJs' src='"+((window.location.protocol=="file:")?"http:":window.location.protocol)+"//www.aikf.com/ask/resources/app/ask/mobileMain.js?_="+Math.random()+"' type='text/javascript'%3E%3C/script%3E")) </script>
 		<meta charset="utf-8">
 		<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
