@@ -104,16 +104,16 @@
         	</div>
         </div>
         <ul class="decript-list">
-        	<li>
+        	<li style="height: 80px;display: block;">
         		<span class="color" style="float: left;">特点：</span>
-        		<div class="house-tag1" style=" ">
+        		<div class="house-tag1" style=" width: 70% ">
 					@foreach($label_name as $key=>$value)
 						<i class="label_<?php echo rand(1,4)?>">{{$value}}</i>
 					@endforeach
         		</div>
         	</li>
         	<li>
-        		<span class="color">单价：</span>{{$list->r_price}}
+        		<span class="color" style="width: 30%">单价：</span>{{$list->r_price}}
         	</li>
         	<li>
         		<span class="sy"><span class="color">类型</span>：{{$list->r_form}}</span>
