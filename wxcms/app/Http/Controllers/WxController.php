@@ -218,7 +218,7 @@ class WxController extends Controller
         /* 接值 */
         $data = $Request->input();
         $rent_id = $data['id'];
-        $content = $data['content'];
+        $content = htmlspecialchars($data['content']);
         $time = time();
 
         $arr = [ 'rent_id'=>$rent_id,
@@ -228,6 +228,7 @@ class WxController extends Controller
                 ];
 
         $res = DB::table('comment')->insert($arr);
+
         if($res)
         {
             $result['errCode'] = 1;
