@@ -16,10 +16,25 @@ class WxController extends Controller
     public function index(){
 
         $like = DB::table('rent_house')->take(3)->get();
-
-
+        $like=json_encode($like);
+        $like=json_decode($like,true);
+        $rent_label=array();
+        foreach($like as $key => $value){
+            $like[$key]['label_name']=array();
+            $rent_label[$key]=DB::table('rent_label')->where('rent_id','=',"$value[rent_id]")->get();
+        }
+        $rent_label=json_encode($rent_label);
+        $rent_label=json_decode($rent_label,true);
+        foreach($rent_label as $key =>$value) {
+            foreach ($value as $k => $v) {
+                $label[$k] = DB::table('label')->where('label_id', '=', $v['label_id'])->select('label_name')->get();
+                $label=json_encode($label);
+                $label=json_decode($label,true);
+                $like[$key]['label_name'][$k] = $label[$k][0]['label_name'];
+            }
+        }
         $data['like'] = $like;
-    	return view('static_wx/index',$data);
+        return view('static_wx/index',$data);
     }
 
     //房源列表
@@ -57,6 +72,23 @@ class WxController extends Controller
         $arr3=DB::select("SELECT DISTINCT(r_type) FROM rent_house");
         $ym="http://www.back.com/";
         $data['ym']=$ym;
+        $list=json_encode($list);
+        $list=json_decode($list,true);
+        $rent_label=array();
+        foreach($list as $key => $value){
+            $rent_label[$key]=DB::table('rent_label')->where('rent_id','=',"$value[rent_id]")->get();
+            $list[$key]['label_name']=array();
+        }
+        $rent_label=json_encode($rent_label);
+        $rent_label=json_decode($rent_label,true);
+        foreach($rent_label as $key =>$value) {
+            foreach ($value as $k => $v) {
+                $label[$k] = DB::table('label')->where('label_id', '=', $v['label_id'])->select('label_name')->get();
+                $label=json_encode($label);
+                $label=json_decode($label,true);
+                $list[$key]['label_name'][$k] = $label[$k][0]['label_name'];
+            }
+        }
         $data['list']=$list;
         return view("static_wx/rentlist",$data,['arr1'=>$arr1,'arr2'=>$arr2,'arr3'=>$arr3]);
     }
@@ -69,8 +101,16 @@ class WxController extends Controller
 
         $data['userid'] = $userid;
         $data['fid'] = $id;
-
-
+        $rent_label=DB::table('rent_label')->where('rent_id','=',$id)->get();
+        foreach($rent_label as $key =>$val){
+            $list[$key]=DB::table('label')->where('label_id','=',$val->label_id)->select('label_name')->get();
+            $list=json_encode($list);
+            $list=json_decode($list,true);
+        }
+        $label_name=array();
+        foreach($list as $key =>$value){
+            $label_name[$key]=$value[0]['label_name'];
+        }
         $ip = $_SERVER['REMOTE_ADDR'];
         $result = History::where(array('ip'=>$ip,'rent_id'=>$id))->get()->toArray();
 
@@ -116,7 +156,7 @@ class WxController extends Controller
         }
 
         $data['lishi'] = $lishi;
-
+        $data['label_name'] = $label_name;
     	return view('static_wx/housedetail',$data);
 
     }

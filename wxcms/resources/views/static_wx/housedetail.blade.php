@@ -106,10 +106,9 @@
         	<li>
         		<span class="color" style="float: left;">特点：</span>
         		<div class="house-tag1" style=" ">
-        			<i class="yaoshi">有钥匙</i>
-        			<i class="xuequ">学区房</i>
-        			<i class="dujia">独家</i>
-        			<i class="new">满两年</i>
+					@foreach($label_name as $key=>$value)
+						<i class="label_<?php echo rand(1,4)?>">{{$value}}</i>
+					@endforeach
         		</div>
         	</li>
         	<li>
