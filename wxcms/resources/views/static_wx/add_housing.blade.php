@@ -79,7 +79,14 @@
                         <td align="right">楼层:</td>
                         <td align="left">
                             <input type="text" class="text4" id="r_floor">
-
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">特点</td>
+                        <td style="background: lightgrey">
+                            @foreach($label as $value)
+                                <span style="display: block; float: left; width: 33%"><input id="label_id" class="label_id" type="checkbox" value="{{$value->label_id}}" name="label_id[]" >{{$value->label_name}}</span>
+                            @endforeach
                         </td>
                     </tr>
                     <tr>
@@ -104,6 +111,7 @@
 
                         </td>
                     </tr>
+
                     <tr>
                         <td colspan="2">
 
@@ -222,13 +230,20 @@
         var r_fixture = $("#r_fixture").val(); //是否装修
         var r_img = $(".imagename").html();
         var r_video = $('.video_val').val();  //视频路径
-
+        var label_id=$(".label_id");
+        var ids= "";
+        for(var i=0; i<label_id.length; i++ ){
+            if(label_id[i].checked==true){
+                ids+= ","+label_id[i].value;
+            }
+        }
+        ids=ids.substr(1);
         $.ajax({
             type: "POST",
             url: "{{url('add_housing')}}",
             data: {_token:token,r_title:r_title,r_district:r_district,landlord_id:fd_id
             ,r_adress:r_address,r_price:r_price,r_type:r_type,r_way:r_way,r_area:r_area
-            ,r_form:r_form,r_floor:r_floor,r_fixture:r_fixture,r_img:r_img,r_video:r_video},
+            ,r_form:r_form,r_floor:r_floor,r_fixture:r_fixture,r_img:r_img,r_video:r_video,label_id:ids},
             success: function(msg){
                 alert(msg);
                 window.location.href='fd_personal';
