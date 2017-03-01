@@ -42,7 +42,7 @@ Route::get('housedetail/{id}.html','WxController@housedetail');
 /* 查询房屋评论 */
 Route::get('comment/{id}.html','WxController@commlist');
 /* 房屋评论添加 */
-Route::get('comment/_add','WxController@commadd');
+Route::get('_add','WxController@commadd');
 /* 评论回复入库 */
 Route::get('comment/_reply','WxController@replyadd');
 

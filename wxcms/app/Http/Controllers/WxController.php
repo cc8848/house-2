@@ -186,7 +186,7 @@ class WxController extends Controller
         }
 
         foreach ($list as $key => $value) {
-            $res = DB::table('reply')->where('reply_user_id','=',$value['user_id'])->get();
+            $res = DB::table('reply')->where('comm_id','=',$value['comm_id'])->get();
             $res = json_decode(json_encode($res),true);
             foreach ($res as $k => $val) {
                 $a = DB::table('user')->where("user_id",'=',$val['user_id'])->first();
@@ -259,7 +259,7 @@ class WxController extends Controller
         $data = $Request->input();
 
         $arr = [ 'rent_id'=>$data['rent_id'],
-                 'reply_user_id'=>$data['reply_user_id'],
+                 'comm_id'=>$data['comm_id'],
                  'content'=>$data['reply'],
                  'user_id'=>$userid,
                  'reply_time'=>time(),
