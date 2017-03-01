@@ -15,7 +15,7 @@
   <input type="hidden" name="id"  value="<?php echo $id ?>" />
   <textarea id='content' ></textarea>
    <div class="tjpl">
-    <input type="submit" value="提交评论" id="btn" /> <span></span>
+    <input type="button" value="提交评论" id="btn" /> <span></span>
    </div><!--tjpl/-->
  </form>
  <table class="pinghuifu">
@@ -35,7 +35,7 @@
     </div><!--huifu-s/-->
     <div class="reply">
      <form action="_reply" method="get">
-      <input type="hidden" name="reply_user_id" value="<?php echo $val['user_id'] ?>" /> 
+      <input type="hidden" name="comm_id" value="<?php echo $val['comm_id'] ?>" /> 
       <input type="hidden" name="rent_id" value="<?php echo $id ?>" /> 
       <textarea name="reply"></textarea>
       <div class="re-tijiao">
@@ -70,8 +70,7 @@
       alert('评论内容呢?  让你造了?');
       return;
     }
-
-    url='_add';
+    url = "{{action('WxController@commadd')}}";
     $.get(url,{id:id,content:content},function(msg){
       if(msg.errCode == 1 )
       {
