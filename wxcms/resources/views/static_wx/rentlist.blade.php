@@ -178,7 +178,7 @@
 
             <li>
                 <a href="{{url('housedetail')}}/{{$v['rent_id']}}.html">
-                <img class="house-pic" src="{{asset('uploadfile/upload/$v[r_img]')}}" />
+                <img class="house-pic" src="{{asset('uploadfile/upload/'.$v['r_img'].')}}" />
                 <p class="house-title">{{$v['r_title']}}</p>
                 <p class="house-type">{{$v['r_type']}}</p>
                 <p class="house-address">{{$v['r_adress']}}</p>
