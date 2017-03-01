@@ -307,11 +307,8 @@ class WxController extends Controller
             $data['username'] = $fd_username;
             $data['f_toux'] = $r_toux;
 
-
             return view('static_wx/fd_personal',$data);
         }else{
-
-
             return redirect('fd_login');
         }
 

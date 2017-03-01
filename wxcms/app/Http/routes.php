@@ -147,3 +147,7 @@ Route::POST('follow','WxfollowController@follow');
 
 //用户关注的房源
 Route::get('myfollow','WxfollowController@myfollow');
+
+//视频上传
+Route::any('upVideo','UpvideoController@upVideo');
+Route::any('uptest','UpvideoController@uptest');
