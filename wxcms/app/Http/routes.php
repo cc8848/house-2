@@ -38,6 +38,14 @@ Route::get('wx','WxController@index');
 Route::get('rentlist',"WxController@rentlist");
 //房屋详情页面
 Route::get('housedetail/{id}.html','WxController@housedetail');
+
+/* 查询房屋评论 */
+Route::get('comment/{id}.html','WxController@commlist');
+/* 房屋评论添加 */
+Route::get('comment/_add','WxController@commadd');
+/* 评论回复入库 */
+Route::get('comment/_reply','WxController@replyadd');
+
 //房东登录
 Route::get('fd_login','WxLoginController@index');
 

@@ -138,7 +138,8 @@
         	  </div>
         	</li>
         	<li>
-        	  <a href="" class="detail-agent-title">更多房评<i class="link"></i></a>
+
+        	  <a href="{{url('comment')}}/{{$fid}}.html" class="detail-agent-title">更多房评<i class="link"></i></a>
         	</li>
         	<li>
         	  <a href="" class="detail-agent-title">位置及周边<i class="link"></i></a>

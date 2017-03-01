@@ -16,23 +16,8 @@ class WxController extends Controller
     public function index(){
 
         $like = DB::table('rent_house')->take(3)->get();
-        $like=json_encode($like);
-        $like=json_decode($like,true);
-        $rent_label=array();
-        foreach($like as $key => $value){
-            $like[$key]['label_name']=array();
-            $rent_label[$key]=DB::table('rent_label')->where('rent_id','=',"$value[rent_id]")->get();
-        }
-        $rent_label=json_encode($rent_label);
-        $rent_label=json_decode($rent_label,true);
-        foreach($rent_label as $key =>$value) {
-            foreach ($value as $k => $v) {
-                $label[$k] = DB::table('label')->where('label_id', '=', $v['label_id'])->select('label_name')->get();
-                $label=json_encode($label);
-                $label=json_decode($label,true);
-                $like[$key]['label_name'][$k] = $label[$k][0]['label_name'];
-            }
-        }
+
+
         $data['like'] = $like;
     	return view('static_wx/index',$data);
     }
@@ -72,23 +57,6 @@ class WxController extends Controller
         $arr3=DB::select("SELECT DISTINCT(r_type) FROM rent_house");
         $ym="http://www.back.com/";
         $data['ym']=$ym;
-        $list=json_encode($list);
-        $list=json_decode($list,true);
-        $rent_label=array();
-        foreach($list as $key => $value){
-            $rent_label[$key]=DB::table('rent_label')->where('rent_id','=',"$value[rent_id]")->get();
-            $list[$key]['label_name']=array();
-        }
-        $rent_label=json_encode($rent_label);
-        $rent_label=json_decode($rent_label,true);
-        foreach($rent_label as $key =>$value) {
-            foreach ($value as $k => $v) {
-                $label[$k] = DB::table('label')->where('label_id', '=', $v['label_id'])->select('label_name')->get();
-                $label=json_encode($label);
-                $label=json_decode($label,true);
-                $list[$key]['label_name'][$k] = $label[$k][0]['label_name'];
-            }
-        }
         $data['list']=$list;
         return view("static_wx/rentlist",$data,['arr1'=>$arr1,'arr2'=>$arr2,'arr3'=>$arr3]);
     }
@@ -101,13 +69,12 @@ class WxController extends Controller
 
         $data['userid'] = $userid;
         $data['fid'] = $id;
-        $rent_label=DB::table('rent_label')->where('rent_id','=',$id)->get();
+
 
         $ip = $_SERVER['REMOTE_ADDR'];
         $result = History::where(array('ip'=>$ip,'rent_id'=>$id))->get()->toArray();
 
         $listData = DB::table('rent_house')->where('rent_id',$id)->first();  //房屋详情数据
-       
         $fw_id = $listData->img_id;  //房屋id
 
         $fw_img = DB::table('fd_image')->where('fw_id',$fw_id)->get();  //房屋关联图片
@@ -115,7 +82,7 @@ class WxController extends Controller
 
         $data['fw_img'] = $fw_img;
 
-
+        // dd($result);
         if(is_array($result) && !empty($result))
         {
             //存在数据
@@ -149,12 +116,131 @@ class WxController extends Controller
         }
 
         $data['lishi'] = $lishi;
+
     	return view('static_wx/housedetail',$data);
 
     }
 
 
+    /**
+     * 房屋评论查询
+     * @return [type] [description]
+     */
+    public function commlist($id,Request $Request)
+    {   
+        $data['id'] = $id;
+        /* 查询房子所有评论 */
+        $list= DB::select("select * from comment  where rent_id = ".$data['id']."  ORDER BY comm_time desc");
+        $list = json_decode(json_encode($list),true);
 
+        /* 循环查询用户名 */
+        foreach ($list as $key => $value) {
+            $a = DB::table('user')->where("user_id",'=',$value['user_id'])->first();
+            $a = json_decode(json_encode($a),true);
+            $list[$key]['username'] = $a['username'];
+        }
+
+        foreach ($list as $key => $value) {
+            $res = DB::table('reply')->where('reply_user_id','=',$value['user_id'])->get();
+            $res = json_decode(json_encode($res),true);
+            foreach ($res as $k => $val) {
+                $a = DB::table('user')->where("user_id",'=',$val['user_id'])->first();
+                $a = json_decode(json_encode($a),true);
+                $res[$k]['username'] = $a['username'];
+            }
+
+// print_r($res);
+// die;
+                $list[$key]['reply'] = $res;
+           
+        }
+// print_r($list);
+// die;
+
+        $data['list'] = $list;
+// print_r($data);=
+// die;
+        return view('static_wx/comment',$data);
+    }
+
+    /**
+     * 评论添加
+     * @return [type] [description]
+     */
+    public function commadd(Request $Request)
+    {
+        /* 检测是否登陆 */
+        $userid = $Request->session()->get('userid');
+        if(!isset($userid))
+        {
+            $result['errCode'] = 0;
+            $result['msg'] = '请先登录！';
+            echo json_encode($result);
+            exit;
+        }
+
+        /* 接值 */
+        $data = $Request->input();
+
+        print_r($data);
+        die;
+        $rent_id = $data['id'];
+        $content = $data['content'];
+        $time = time();
+
+        $arr = [ 'rent_id'=>$rent_id,
+                 'content'=>$content,
+                 'user_id'=>$userid,
+                 'comm_time'=>$time,
+                ];
+
+        $res = DB::table('comment')->insert($arr);
+        if($res)
+        {
+            $result['errCode'] = 1;
+            $result['msg'] = '评论成功！';
+            echo json_encode($result);
+        }
+        else
+        {
+            $result['errCode'] = 2;
+            $result['msg'] = '评论失败！';
+            echo json_encode($result);
+        }
+    }
+
+    /* 回复 */
+    public function replyadd(Request $Request)
+    {
+
+        /* 检测是否登陆 */
+        $userid = $Request->session()->get('userid');
+        if(!isset($userid))
+        {
+            $result['errCode'] = 0;
+            $result['msg'] = '请先登录！';
+            echo json_encode($result);
+            exit;
+        }
+
+        $data = $Request->input();
+
+        $arr = [ 'rent_id'=>$data['rent_id'],
+                 'reply_user_id'=>$data['reply_user_id'],
+                 'content'=>$data['reply'],
+                 'user_id'=>$userid,
+                 'reply_time'=>time(),
+                ];
+        $res = DB::table('reply')->insert($arr);
+        if($res)
+        {
+            return redirect('comment/'.$data['rent_id'].'.html');
+        }
+        else
+        {
+            return redirect('comment/'.$data['rent_id'].'.html');
+        }
+    }
 
 
     public function map(Request $Request){
