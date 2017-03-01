@@ -83,6 +83,21 @@
                         </td>
                     </tr>
                     <tr>
+                        <td align="right">房源视频:</td>
+                        <td align="left">
+                            <div onclick="F_Open_dialog()" class="upimg">
+                                <img src="images/xg_getHome1_18.png" style="margin-top: 10px;margin-right: 10px;" alt="">
+                                <span>点击选择视频</span>
+                            </div>
+                            <input type="button" class="chong" style="display: none;" onclick="F_Open_dialog()" value="重新选择视频">
+                            <input type="hidden" class="video_val" >
+                            <form id="submit_form" method="post" action="/upVideo" target="exec_target" enctype="multipart/form-data">
+                                <input type="file" style="display: none;" name="r_video" class="text4" id="r_video">  <!-- 添加上传文件 -->
+                            </form>
+                            <iframe id="exec_target" style="display: none;" name="exec_target"></iframe>
+                        </td>
+                    </tr>
+                    <tr>
                         <td align="right">房源照片:</td>
                         <td align="center">
                             <input type="file" id="myFile" multiple class="text5">
@@ -131,7 +146,9 @@
 
 
 </footer>
-
+<div class="shade">
+    <p>正在上传，请稍后……</p>
+</div>
 
 </body>
 
@@ -148,6 +165,48 @@
 </script>
 
 <script>
+
+    /*视频*/
+    function F_Open_dialog()
+    {
+        document.getElementById("r_video").click();
+    }
+
+    $(document).ready(function(){
+        //选择文件成功则提交表单
+        $("#r_video").change(function(){
+            $('.shade').show();
+//            document.body.style.overflow='hidden';
+//            document.body.style.height='100%';
+            if($("#r_video").val() != '') $("#submit_form").submit();
+        });
+        //iframe加载响应，初始页面时也有一次，此时data为null。
+        $("#exec_target").load(function(){
+            $('.shade').show();
+            var data = $(window.frames['exec_target'].document.body).find("textarea").html();
+            console.log(data);
+            $("#info").html(data)
+            if(data != null){
+                //若iframe携带返回数据，则显示在feedback中
+                var dataObj = JSON.parse(data);
+                if(dataObj.code == 1){
+                    $('.upimg').html('<video src="'+dataObj.path+'" width="320" height="240" controls="controls">您的浏览器不支持视频播放</video>');
+                    $('.video_val').val(dataObj.path);
+                    $('.upimg').removeAttr('onclick');
+                    $('.chong').show();
+                }else{
+                    alert(dataObj.error);
+                }
+                $("#info").html(data.replace(/&lt;/g,'<').replace(/&gt;/g,'>'));
+                $("#upload_file").val('');
+                $('.shade').hide();
+            }else{
+                $('.shade').hide();
+            }
+        });
+    });
+    
+
     $('#send').click(function(){
         var token = "{{csrf_token()}}";
         var r_title = $("#r_title").val();  //房屋标题
@@ -162,13 +221,14 @@
         var r_floor = $("#r_floor").val(); //楼层
         var r_fixture = $("#r_fixture").val(); //是否装修
         var r_img = $(".imagename").html();
+        var r_video = $('.video_val').val();  //视频路径
 
         $.ajax({
             type: "POST",
             url: "{{url('add_housing')}}",
             data: {_token:token,r_title:r_title,r_district:r_district,landlord_id:fd_id
             ,r_adress:r_address,r_price:r_price,r_type:r_type,r_way:r_way,r_area:r_area
-            ,r_form:r_form,r_floor:r_floor,r_fixture:r_fixture,r_img:r_img},
+            ,r_form:r_form,r_floor:r_floor,r_fixture:r_fixture,r_img:r_img,r_video:r_video},
             success: function(msg){
                 alert(msg);
                 window.location.href='fd_personal';
