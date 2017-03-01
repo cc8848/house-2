@@ -1,0 +1,4 @@
+[21-Feb-2017 15:08:34 PRC] PHP Notice:  Undefined index: theFile in D:\phpStudy\WWW\uploadfile\fileTest.php on line 4
+[21-Feb-2017 15:08:34 PRC] PHP Notice:  Undefined index: theFile in D:\phpStudy\WWW\uploadfile\fileTest.php on line 10
+[21-Feb-2017 15:08:34 PRC] PHP Notice:  Undefined index: theFile in D:\phpStudy\WWW\uploadfile\fileTest.php on line 27
+[21-Feb-2017 15:08:34 PRC] PHP Warning:  file_get_contents(): Filename cannot be empty in D:\phpStudy\WWW\uploadfile\fileTest.php on line 27

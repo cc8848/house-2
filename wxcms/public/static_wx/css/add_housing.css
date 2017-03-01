@@ -1,0 +1,89 @@
+html{
+    background: #ffffff;
+}
+body{
+    display: -moz-box;
+    display: -webkit-box;
+    box-orient:vertical;
+    -webkit-box-orient:vertical;
+    -moz-box-orient:vertical;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+
+}
+
+
+header{
+    text-align: center;
+    font-size:4em;
+    height: 8rem;
+    line-height: 8rem;
+    background: #ff5a60;
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    color: #ffffff;
+    font-family: "Microsoft YaHei";
+
+
+}
+
+footer {
+
+    margin: 0;
+    padding: 25px;
+
+    font-size:4em;
+    height: 20em;
+    font-family: "Microsoft YaHei";
+
+
+}
+.content{
+    font-size: 2.6rem;
+}
+.content .text{
+    width: 30rem;
+    height: 3.5rem;
+    border: 1px solid #ff5a60;
+    font-size:2.4rem;
+}
+.content .text2{
+    width: 2.6rem;
+    height: 2.6rem;
+    border: 1px solid #ff5a60;
+    font-size:2.4rem;
+}
+.content .text3{
+    width: 15rem;
+    height: 3.5rem;
+    border: 1px solid #ff5a60;
+    font-size:2.4rem;
+}
+.content .text4{
+    width: 10rem;
+    height: 3.5rem;
+    border: 1px solid #ff5a60;
+    font-size:2.4rem;
+}
+.content .text5{
+    font-size: 35px;
+    font-size:2.4rem;
+}
+
+.content table{
+    width: 100%;
+
+}
+.submit{
+    width: 20rem;
+    height: 3.5rem;
+    font-size:2.6rem;
+    border: 1px solid #21a9f5;
+    background: #21a9f5;
+    color: #ffffff;
+
+}
+
+

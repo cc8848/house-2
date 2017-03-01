@@ -1,0 +1,19 @@
+[11-Feb-2017 09:16:48 PRC] PHP Warning:  require(D:\phpStudy\WWW\aiwujiwu\6group\cms\bootstrap/../vendor/autoload.php): failed to open stream: No such file or directory in D:\phpStudy\WWW\aiwujiwu\6group\cms\bootstrap\autoload.php on line 17
+[11-Feb-2017 09:16:48 PRC] PHP Fatal error:  require(): Failed opening required 'D:\phpStudy\WWW\aiwujiwu\6group\cms\bootstrap/../vendor/autoload.php' (include_path='.;C:\php\pear') in D:\phpStudy\WWW\aiwujiwu\6group\cms\bootstrap\autoload.php on line 17
+[11-Feb-2017 01:46:17 UTC] PHP Parse error:  syntax error, unexpected ')' in D:\phpStudy\WWW\aiwujiwu\6group\cms\storage\framework\views\c9d7f2f565f9d2490aa30221547cd311f59262e9.php on line 69
+[14-Feb-2017 00:01:23 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\veiw() in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 62
+[14-Feb-2017 00:01:27 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\veiw() in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 62
+[14-Feb-2017 00:01:59 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\veiw() in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 62
+[16-Feb-2017 02:00:42 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxLoginController.php on line 44
+[16-Feb-2017 07:09:01 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 78
+[16-Feb-2017 07:10:59 UTC] PHP Fatal error:  Call to a member function firt() on array in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 79
+[16-Feb-2017 07:11:45 UTC] PHP Fatal error:  Call to a member function first() on array in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 79
+[20-Feb-2017 06:43:10 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\take() in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 17
+[20-Feb-2017 06:43:12 UTC] PHP Fatal error:  Call to undefined function App\Http\Controllers\take() in D:\phpStudy\WWW\aiwujiwu\6group\cms\app\Http\Controllers\WxController.php on line 17
+[22-Feb-2017 01:19:30 UTC] PHP Parse error:  syntax error, unexpected end of file in D:\phpStudy\WWW\awjw\group6\wxcms\storage\framework\views\f9f527c9f930fb6426c709fee7a437953c4ab94c.php on line 63
+[24-Feb-2017 02:15:00 UTC] PHP Fatal error:  Call to a member function toArray() on null in D:\phpStudy\WWW\chenyang\wxcms\app\Http\Controllers\WxLoginController.php on line 44
+[24-Feb-2017 05:58:05 UTC] PHP Fatal error:  Call to a member function originalName() on array in D:\phpStudy\WWW\chenyang\wxcms\app\Http\Controllers\WxfileController.php on line 17
+[26-Feb-2017 10:22:30 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\chenyangsvn\app\Http\Controllers\WxfollowController.php on line 33
+[26-Feb-2017 10:22:32 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\chenyangsvn\app\Http\Controllers\WxfollowController.php on line 33
+[26-Feb-2017 10:22:44 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\chenyangsvn\app\Http\Controllers\WxfollowController.php on line 33
+[26-Feb-2017 10:25:41 UTC] PHP Fatal error:  Class 'App\Http\Controllers\DB' not found in D:\phpStudy\WWW\chenyangsvn\app\Http\Controllers\WxfollowController.php on line 33
