@@ -218,7 +218,7 @@ class WxController extends Controller
         /* 接值 */
         $data = $Request->input();
         $rent_id = $data['id'];
-        $content = strip_tags($data['content']);
+        $content = htmlspecialchars($data['content']);
         $time = time();
 
         $arr = [ 'rent_id'=>$rent_id,
