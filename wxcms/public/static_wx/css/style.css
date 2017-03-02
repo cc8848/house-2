@@ -354,3 +354,9 @@ transform: translate(-80px,150px); -webkit-transform: translate(-80px,150px); }
 .agent-title1 img{ float: right; margin-top: 3px;}
 .red{ color: #ff5a60;}
 
+/*房屋视频*/
+.video{
+    width:100%;
+    height: auto;
+    max-width: 370px;
+}

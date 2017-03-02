@@ -135,7 +135,7 @@
 				<li>
 					<a class="detail-agent-title">房屋直播回放</a>
 					<div class="detail-commetent" style="padding: 1%">
-						<video src="{{asset($list->r_video)}}"  width="280" height="200" controls="controls">您的浏览器不支持视频播放</video>
+						<video src="{{asset($list->r_video)}}" class="video" controls="controls">您的浏览器不支持视频播放</video>
 					</div>
 					</li>
 			@endif
