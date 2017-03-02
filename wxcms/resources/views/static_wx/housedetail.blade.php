@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+
 		<meta charset="utf-8">
 		<title></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -130,6 +131,14 @@
         	</li>
         </ul>
         <ul class="detail-agent">
+			@if(!empty($list->r_video))
+				<li>
+					<a class="detail-agent-title">房屋直播回放</a>
+					<div class="detail-commetent" style="padding: 1%">
+						<video src="{{asset($list->r_video)}}"  width="280" height="200" controls="controls">您的浏览器不支持视频播放</video>
+					</div>
+					</li>
+			@endif
         	<li>
         	  <a class="detail-agent-title">经纪人房评</a>
         	  <div class="detail-commetent">
@@ -184,8 +193,8 @@
         			<span><img src="{{url('static_wx/img')}}/duanxin.png" width="25" height="20"/></span>
         			<P>短信</P>
         		</a>
-        		<a href="">
-        			<span><img src="{{url('static_wx/img')}}/shop.png" width="78" height="34"/></span>
+        		<a href="http://www.aikf.com/ask/h5/awjw.htm">
+        			<span><img src="{{url('static_wx/img')}}/sho1p.png" width="78" height="34"/></span>
         		</a>
         	</div>
         </div>
