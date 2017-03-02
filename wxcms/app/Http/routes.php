@@ -150,4 +150,5 @@ Route::get('myfollow','WxfollowController@myfollow');
 Route::any('upVideo','UpvideoController@upVideo');
 Route::any('uptest','UpvideoController@uptest');
 
-Route::any('wblogin','LoginController@wblogin');
+
+Route::any('wblogin','WxLoginController@wblogin');
