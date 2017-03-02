@@ -572,7 +572,7 @@ $ken = $re['access_token'];
 $uid = $re['uid'];
 $urs = "https://api.weibo.com/2/users/show.json?access_token=$ken&uid=$uid";
 $res = file_get_contents($urs);
-    echo $res[0]->id;
+    var_dump($res);
     }
 
 
