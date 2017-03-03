@@ -173,19 +173,19 @@ class WxController extends Controller
      */
     public function commlist($id,Request $Request)
     {   
-        var_dump($id);die;
+
         $data['id'] = $id;
         /* 查询房子所有评论 */
         $list= DB::select("select * from comment  where rent_id = ".$data['id']."  ORDER BY comm_time desc");
         $list = json_decode(json_encode($list),true);
-var_dump($list);die;
+
         /* 循环查询用户名 */
         foreach ($list as $key => $value) {
             $a = DB::table('user')->where("user_id",'=',$value['user_id'])->first();
             $a = json_decode(json_encode($a),true);
             $list[$key]['username'] = $a['username'];
         }
-
+var_dump($list[$key]['username']);die;
         foreach ($list as $key => $value) {
             $res = DB::table('reply')->where('comm_id','=',$value['comm_id'])->get();
             $res = json_decode(json_encode($res),true);
