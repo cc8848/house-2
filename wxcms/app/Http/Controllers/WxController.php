@@ -185,7 +185,7 @@ class WxController extends Controller
             $a = json_decode(json_encode($a),true);
             $list[$key]['username'] = $a['username'];
         }
-var_dump($list[$key]['username']);die;
+var_dump($a);die;
         foreach ($list as $key => $value) {
             $res = DB::table('reply')->where('comm_id','=',$value['comm_id'])->get();
             $res = json_decode(json_encode($res),true);
