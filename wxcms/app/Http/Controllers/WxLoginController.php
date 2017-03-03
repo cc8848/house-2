@@ -585,7 +585,7 @@ $a = json_decode($res,true);
             $datas = array('username' => $a['name'],
             'id' => $a['id'], );
 
-              $users = DB::table('user')->where('id',"$a['id']")->get();
+              $users = DB::table('user')->where('id',$a['id'])->get();
               if (empty($users)) {
                   DB::table('user')->insert($datas);
 
