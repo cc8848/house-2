@@ -28,7 +28,7 @@
 		<a href="" class="me"><img src="{{url('static_wx/img')}}/me.png" width="20" height="30"></a>
 	</header>
     <div class="member">
-    	<a href="{{url('personal_info')}}" class="touxiang"><img src="{{$f_toux}}" width="54" height="54"></a>
+    	<a href="{{url('personal_info')}}" class="touxiang"><img src=" {{$f_toux}}" width="54" height="54"></a>
     	<a class="member-btn">{{$username}}，欢迎登录</a>
     </div>
     <ul class="decript-list">
