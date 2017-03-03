@@ -177,7 +177,7 @@ class WxController extends Controller
         /* 查询房子所有评论 */
         $list= DB::select("select * from comment  where rent_id = ".$data['id']."  ORDER BY comm_time desc");
         $list = json_decode(json_encode($list),true);
-
+var_dump($list);die;
         /* 循环查询用户名 */
         foreach ($list as $key => $value) {
             $a = DB::table('user')->where("user_id",'=',$value['user_id'])->first();

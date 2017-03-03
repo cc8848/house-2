@@ -588,7 +588,7 @@ $a = json_decode($res,true);
               $users = DB::table('user')->where('user_id',$a['id'])->get();
               if (empty($users)) {
                   DB::table('user')->insert($datas);
-
+ return redirect('zf_personal');
              
               }else
               {
