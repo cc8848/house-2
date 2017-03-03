@@ -52,4 +52,6 @@ class UpvideoController extends Controller
     public function uptest(){
         return view('static_wx/uptest');
     }
+
+
 }
