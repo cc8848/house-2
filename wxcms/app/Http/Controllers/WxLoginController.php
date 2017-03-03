@@ -575,7 +575,7 @@ $res = file_get_contents($urs);
 $a = json_decode($res);
 
 foreach ($a as $key => $value) {
-    var_dump($key);
+    var_dump($a);
 }
 
                 // $Request->session()->put('fd_username',$a['name']);  //名称
