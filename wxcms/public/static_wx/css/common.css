@@ -3,6 +3,8 @@ body{
     font-family: "Microsoft YaHei";
     color: #535353;
     box-sizing: border-box;
+    max-width: 640px;
+    margin: 0 auto;
 }
 *{
     margin: 0;
