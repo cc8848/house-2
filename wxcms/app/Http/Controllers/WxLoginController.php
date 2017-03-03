@@ -574,8 +574,6 @@ $urs = "https://api.weibo.com/2/users/show.json?access_token=$ken&uid=$uid";
 $res = file_get_contents($urs);
 $a = json_decode($res);
  var_dump($a['id']);
-
-
                 // $Request->session()->put('fd_username',$a['name']);  //名称
                 // $Request->session()->put('r_toux',$a['profile_image_url']);  //头像
               
