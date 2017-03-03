@@ -261,7 +261,7 @@ class WxController extends Controller
 
         $arr = [ 'rent_id'=>$data['rent_id'],
                  'comm_id'=>$data['comm_id'],
-                 'content'=>$data['reply'],
+                 'content'=>htmlspecialchars($data['reply']),
                  'user_id'=>$userid,
                  'reply_time'=>time(),
                 ];
