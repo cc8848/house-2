@@ -579,7 +579,7 @@ $a = json_decode($res,true);
               
                 $Request->session()->put('fd_id',$a['id']);
                 $Request->session()->put('status',1);
-                return redirect('fd_personal');
+                return redirect('zf_personal');
 
     }
 
