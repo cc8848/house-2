@@ -1,7 +1,14 @@
 body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
 li, dl, dt, dd, form, a, fieldset, input, th, td,table
 {margin: 0; padding: 0; border: 0; outline: none;}
-body{line-height: 1; font-family: "微软雅黑"; font-size: 62.5%; }
+body{line-height: 1; font-family: "微软雅黑"; font-size: 62.5%;
+    width:100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+*{
+    margin: 0;
+}
 html{margin: 0; padding: 0;}
 input{font-family: "微软雅黑"; outline: none;}
 input[type=”button”], input[type=”submit”], input[type=”reset”] {
@@ -68,7 +75,7 @@ float: left; font-size: .75rem; display: block;}
 .list li{ display: inline-table; text-align: center; line-height: 1.5rem; padding: 0.9375rem 0; height: 1.5rem; width: 49%; }
 .jsq{ background: #ff5a60;}
 .fjsq{ background: #ffa41f;}
-.foot{ height:55px;text-align: center; background: #eee; position: fixed; bottom: 0; width: 100%; z-index: 10;}
+.foot{ height:55px;text-align: center; background: #eee; position: fixed; bottom: 0; width: 100%; z-index: 10; max-width: 640px;}
 .foot li{ float: left; width: 25%; padding-top: 8px; font-size: 0.875rem;}
 .foot li a{ color: #797575; display: block;}
 .foot li:hover{ background: #fcf5f5;}
@@ -283,12 +290,12 @@ height: 1.25rem; display: block; background-size:cover ; margin: 0 auto; }
 .detail-agent-title{ text-indent: 0.75rem; color：#474747; padding: .875rem 0;  font-size: 1rem; color: #575757; display: block;}
 .detail-commetent{border-top: 1px solid #dcdcdc;line-height: 1.25rem; font-size: 0.938rem; padding: 0.75rem; word-break: break-word;}
 #allmap{ width: 100%; height: 150px;}
-.house-tag1{ float: left; margin-top: 15px;}
+.house-tag1{ float: left; margin-top:15px;}
 .member{ background: url(../img/mine_head_bg.png) no-repeat; background-size: cover; width: 100%; height: 8.75rem;}
 .touxiang{ width:3.375rem; height: 3.375rem; margin: 0 auto; padding-top: 1rem; display: block;}
 .member-btn{ border: 1px solid #fff; height: 1.875rem; width: 6rem; margin: 0 auto; margin-top: 1rem; line-height: 1.875rem; text-align: center; color: #fff; text-align: center; display: block;}
 .decript-list a{ color: #575757;}
-.color{color:#474747; font-size: 1rem;}
+.color{color:#474747; font-size: 1rem; }
 .link{display: inline-block; width: 0.6375rem;height: 0.6375rem; background: url(../img/link.png) center; background-size: 100% 100%; float: right; margin: 4px 15px 0 0;}
 .see-house{ overflow: hidden; padding: 0px 15px; border-top: 1px solid #DCDCDC;}
 .see-house li{ border: 0; position: relative; border-bottom: 1px dashed #dcdcdc; padding-bottom: 15px;}
@@ -354,3 +361,9 @@ transform: translate(-80px,150px); -webkit-transform: translate(-80px,150px); }
 .agent-title1 img{ float: right; margin-top: 3px;}
 .red{ color: #ff5a60;}
 
+/*房屋视频*/
+.video{
+    width:100%;
+    height: auto;
+    max-width: 370px;
+}
