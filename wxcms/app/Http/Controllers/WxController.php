@@ -173,6 +173,7 @@ class WxController extends Controller
      */
     public function commlist($id,Request $Request)
     {   
+
         $data['id'] = $id;
         /* 查询房子所有评论 */
         $list= DB::select("select * from comment  where rent_id = ".$data['id']."  ORDER BY comm_time desc");

@@ -51,7 +51,7 @@
   </tr>
   <tr>
     <td style="border-bottom: 0;"><a href="{{url('landlord')}}"><i><img src="{{url('static_wx/img')}}/agent.png"></i><span>房东<br/>直通房东，找房无忧</span></a></td>
-    <td style="border-bottom: 0;"><a href="enter.html" style="margin-left: -0.875rem;"><i><img src="{{url('static_wx/img')}}/new.png"></i><span>走进我们<br/>了解爱乌及屋</span></a></td>
+    <td style="border-bottom: 0;"><a href="http://img.kjschool.net/gsjj/enter.html" style="margin-left: -0.875rem;"><i><img src="{{url('static_wx/img')}}/new.png"></i><span>走进我们<br/>了解爱乌及屋</span></a></td>
   </tr>
 </table>
 <div class="main">
