@@ -251,10 +251,7 @@ class WxController extends Controller
         $userid = $Request->session()->get('userid');
         if(!isset($userid))
         {
-            $result['errCode'] = 0;
-            $result['msg'] = '请先登录！';
-            echo json_encode($result);
-            exit;
+            echo "<script>alert('请先登录');history.go(-1)</script>";die;
         }
 
         $data = $Request->input();
