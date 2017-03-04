@@ -400,7 +400,7 @@ public function usole()
         }
         else
         {
-
+            
 
              $userid = $user['0']->user_id;
             $Request->session()->put('userid',$userid);
@@ -536,6 +536,67 @@ public function usole()
         $request->session()->forget('userid');
         $request->session()->forget('openid');
         return redirect('wx');
+
+    }
+
+    public function wblogin(Request $Request)
+    {
+        $code=$_GET['code'];
+//echo $code;die;
+$url = "https://api.weibo.com/oauth2/access_token";
+$data="client_id=2887630111&client_secret=1388b851dca19104940e861a723c3fb7&grant_type=authorization_code&code=$code&redirect_uri=http://house.wlf928.cn/wblogin";
+$curlobj=curl_init();
+//获取URL地址
+curl_setopt($curlobj,CURLOPT_URL,$url);
+//启用时会将头文件的信息作为数据流输出
+curl_setopt($curlobj,CURLOPT_HEADER,0);
+//不直接输出
+curl_setopt($curlobj,CURLOPT_RETURNTRANSFER,1);
+//在HTTP请求中包含一个"User-Agent: "头的字符串
+curl_setopt($curlobj,CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
+
+curl_setopt($curlobj, CURLOPT_SSL_VERIFYPEER, false); // 跳过证书检查
+curl_setopt($curlobj, CURLOPT_SSL_VERIFYHOST, false);  // 从证书中检查SSL加密算法是否存在
+
+//指定POST方式传值
+curl_setopt($curlobj,CURLOPT_POST,1);
+curl_setopt($curlobj,CURLOPT_POSTFIELDS,$data);
+//设置 HTTP 头字段的数组
+curl_setopt($curlobj,CURLOPT_HTTPHEADER,array('application/x-www-form-urlencoded;   charset=utf-8',   'Content-length:'.strlen($data)));
+$str = curl_exec($curlobj); //执行
+curl_close($curlobj); //执行完毕释放curl
+//print_r($str);die;
+
+$re = json_decode($str,true);
+$ken = $re['access_token'];
+$uid = $re['uid'];
+$urs = "https://api.weibo.com/2/users/show.json?access_token=$ken&uid=$uid";
+$res = file_get_contents($urs);
+$a = json_decode($res,true);
+// print_r($a['id']);
+              
+                $Request->session()->put('r_toux',$a['profile_image_url']);  //头像
+              
+             
+      
+             $Request->session()->put('username',$a['name']);
+            $Request->session()->put('userid',$a['id']);
+            $Request->session()->put('status',3);
+            $datas = array('username' => $a['name'],
+            'id' => $a['id'], );
+
+              $users = DB::table('user')->where('id',$a['id'])->get();
+              if (empty($users)) {
+                  DB::table('user')->insert($datas);
+
+             
+              }else
+              {
+                   return redirect('zf_personal');
+              }
+
+
+       
 
     }
 

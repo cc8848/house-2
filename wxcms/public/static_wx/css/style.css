@@ -1,7 +1,14 @@
 body, html, div, blockquote, img, label, p, h1, h2, h3, h4, h5, h6, pre, ul, ol,
 li, dl, dt, dd, form, a, fieldset, input, th, td,table
 {margin: 0; padding: 0; border: 0; outline: none;}
-body{line-height: 1; font-family: "微软雅黑"; font-size: 62.5%; }
+body{line-height: 1; font-family: "微软雅黑"; font-size: 62.5%;
+    width:100%;
+    max-width: 640px;
+    margin: 0 auto;
+}
+*{
+    margin: 0;
+}
 html{margin: 0; padding: 0;}
 input{font-family: "微软雅黑"; outline: none;}
 input[type=”button”], input[type=”submit”], input[type=”reset”] {
@@ -68,7 +75,7 @@ float: left; font-size: .75rem; display: block;}
 .list li{ display: inline-table; text-align: center; line-height: 1.5rem; padding: 0.9375rem 0; height: 1.5rem; width: 49%; }
 .jsq{ background: #ff5a60;}
 .fjsq{ background: #ffa41f;}
-.foot{ height:55px;text-align: center; background: #eee; position: fixed; bottom: 0; width: 100%; z-index: 10;}
+.foot{ height:55px;text-align: center; background: #eee; position: fixed; bottom: 0; width: 100%; z-index: 10; max-width: 640px;}
 .foot li{ float: left; width: 25%; padding-top: 8px; font-size: 0.875rem;}
 .foot li a{ color: #797575; display: block;}
 .foot li:hover{ background: #fcf5f5;}

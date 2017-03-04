@@ -104,16 +104,16 @@
         	</div>
         </div>
         <ul class="decript-list">
-        	<li style="height: 80px;display: block;">
+        	<li>
         		<span class="color" style="float: left;">特点：</span>
-        		<div class="house-tag1" style=" width: 70% ">
+        		<div class="house-tag1" style=" ">
 					@foreach($label_name as $key=>$value)
 						<i class="label_<?php echo rand(1,4)?>">{{$value}}</i>
 					@endforeach
         		</div>
         	</li>
         	<li>
-        		<span class="color" style="width: 30%">单价：</span>{{$list->r_price}}
+        		<span class="color">单价：</span>{{$list->r_price}}
         	</li>
         	<li>
         		<span class="sy"><span class="color">类型</span>：{{$list->r_form}}</span>
@@ -135,7 +135,7 @@
 				<li>
 					<a class="detail-agent-title">房屋直播回放</a>
 					<div class="detail-commetent" style="padding: 1%">
-						<video src="{{asset($list->r_video)}}" class="video" controls="controls">您的浏览器不支持视频播放</video>
+						<video src="{{asset($list->r_video)}}"  width="280" height="200" controls="controls">您的浏览器不支持视频播放</video>
 					</div>
 					</li>
 			@endif

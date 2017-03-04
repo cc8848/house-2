@@ -65,7 +65,7 @@
             @foreach($like as $k=>$v)
         	<li>
         		<a href="{{url('housedetail')}}/{{$v['rent_id']}}.html">
-        		<img class="house-pic" src='{{asset("/uploadfile/upload/$v[r_img]")}}' />
+        		<img class="house-pic" src='{{asset("uploadfile/upload/$v[r_img]")}}'/>
         		<p class="house-title">{{$v['r_title']}}</p>
         		<p class="house-type">{{$v['r_type']}} {{$v['r_way']}} {{$v['r_area']}}</p>
         		<p class="house-address">山东路</p>

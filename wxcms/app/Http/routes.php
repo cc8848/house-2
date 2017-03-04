@@ -149,4 +149,6 @@ Route::get('myfollow','WxfollowController@myfollow');
 //视频上传
 Route::any('upVideo','UpvideoController@upVideo');
 Route::any('uptest','UpvideoController@uptest');
-Route::any('wx_','UpvideoController@index');
+
+
+Route::any('wblogin','WxLoginController@wblogin');

@@ -67,7 +67,7 @@
     content = $.trim($('#content').val());
     if(content=='')
     {
-      alert('请确定评论内容是否完整？');
+      alert('评论内容呢?  让你造了?');
       return;
     }
     url = "{{action('WxController@commadd')}}";
