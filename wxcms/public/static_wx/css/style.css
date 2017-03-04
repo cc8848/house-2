@@ -277,7 +277,7 @@ font-weight: lighter; width: 70%; float: left; border: 1px solid #dcdcdc; color:
 .detai-attention{ width: 20%; float:right; text-align: center; padding-top: 1rem; border: solid #DCDCDC; border-width: 1px 0px 1px 0;}
 .attention-ico{ width: 1.35rem;
 height: 1.25rem; display: block; background-size:cover ; margin: 0 auto; }
-.detai-attention p{ font-size: 0.938rem; color: #575757; padding-bottom:0.59rem ;}
+.detai-attention p{ font-size: 0.938rem; color: #575757; }
 .detail-list{ overflow: hidden; padding: 1em 0; border:  solid #dcdcdc; border-width: 1px 0; }
 .detai-price{ width: 33%; float: left; border-right: 1px solid #DCDCDC; text-align: center; font-size: 0.938rem; }
 .detai-price span{color:#ff5a60; font-size: 0.875rem;}
