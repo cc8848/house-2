@@ -585,18 +585,10 @@ $a = json_decode($res,true);
             $datas = array('username' => $a['name'],
             'user_id' => $a['id'], );
 
-              $users = DB::table('user')->where('user_id',$a['id'])->get();
-              if (empty($users)) {
-
-                
-                  DB::table('user')->insert('$datas');
+   
  return redirect('zf_personal');
              
-              }else
-              {
-                   return redirect('zf_personal');
-              }
-
+     
 
        
 
