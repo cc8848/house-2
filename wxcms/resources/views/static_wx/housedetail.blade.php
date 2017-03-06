@@ -43,7 +43,7 @@
 					</ul>
 				</div>
 			</div>
-		<a href="" class="me"><img src="{{url('static_wx/img')}}/me.png" width="20" height="30"></a>
+		<a href="{{asset('zf')}}" class="me"><img src="{{url('static_wx/img')}}/me.png" width="20" height="30"></a>
 	</header>
 	<nav class="nav1">
 		<a href="" class="home" style="margin-left: 0.938rem;">爱屋网</a>

@@ -10,7 +10,8 @@
 </head>
 
 <body>
-
+<h1><a href="{{url('housedetail')}}/{{$id}}.html">返回详情页</a></h1>
+<hr>
  <form action="#" method="get" class="tjpl-form">
   <input type="hidden" name="id"  value="<?php echo $id ?>" />
   <textarea id='content' ></textarea>
@@ -18,6 +19,7 @@
     <input type="button" value="提交评论" id="btn" /> <span></span>
    </div><!--tjpl/-->
  </form>
+<hr>
  <table class="pinghuifu">
 <?php foreach ($list as $key => $val): ?>
   <tr>
@@ -30,9 +32,9 @@
           评论内容：<?php echo $val['content'] ?>
     </div><!--phPar/-->
     <div class="huifu-s">
-     <span class="re-show">[回复]</span>
-     <span class="re-hide">[收起回复]</span>
-    </div><!--huifu-s/-->
+           <span class="re-show">[回复]</span>
+           <span class="re-hide">[收起回复]</span>
+       </div><!--huifu-s/-->
     <div class="reply">
      <form action="_reply" method="get">
       <input type="hidden" name="comm_id" value="<?php echo $val['comm_id'] ?>" /> 
@@ -45,12 +47,28 @@
     </div><!--reply/-->
 
     <?php if(isset($val['reply'])){ foreach ($val['reply'] as $key => $v){ ?>
-      <div style='height:70px;'>
+      <div style='height:70px;' class="par-div">
         <hr />
         <h4><?php echo $v['username'] ?>　回复　<?php echo $val['username'] ?><span style='margin-left:20px;'><?php echo date('Y-m-d H:i:s',$v['reply_time']) ?></span></h4>
         <div>
             回复内容：<?php echo $v['content'] ?>
         </div>
+
+          <div class="huifu-s">
+              <span class="re-show re-show-2">[回复]</span>
+              <span class="re-hide re-hide-2">[收起回复]</span>
+          </div>
+          <div class="reply">
+              <form action="_reply" method="get">
+                  <input type="hidden" name="comm_id" value="<?php echo $val['comm_id'] ?>" />
+                  <input type="hidden" name="rent_id" value="<?php echo $id ?>" />
+                  <textarea name="reply"></textarea>
+                  <div class="re-tijiao">
+                      <input type="submit" value="提交回复" id="sub" />
+                  </div><!--re-tijiao/-->
+              </form>
+          </div><!--reply/-->
+
       </div>
     <?php } } ?>
    </td>
@@ -83,6 +101,14 @@
       }
     },'json')
   })
+
+    $('.re-show-2').click(function(){
+        $(this).parents('.par-div').css('height','200px');
+    })
+  $('.re-hide-2').click(function(){
+      $(this).parents('.par-div').css('height','70px');
+  })
+
 </script>
 
 </html>
